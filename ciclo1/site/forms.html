@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Forms</title>
+<style type="text/css">
+
+	form {
+		background-color: red;
+		border: 1px solid #000;
+		width: 300px;
+		height: auto;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.txt {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		outline: none;
+
+	}
+
+	.btn {
+		background-color: blue;
+		border: 1px solid #fff;
+	}
+
+</style>
+
+<body>
+	<form name="frmCadastro" method="post">
+		<input class="txt" placeholder="Digite seu login" type="text" name="" >
+		<input class="txt" type="password" name="">
+		<select name="servidor">
+			<option>Selecione</option>
+			<option>Opção 1</option>
+			<option>Opção 2</option>
+		</select>
+		<div>
+			<input type="checkbox" name="Opcao1" value="">
+			<input type="checkbox" name="Opcao1" value="">
+			<input type="radio" name="teste" value="">
+			<input type="radio" name="teste" value="">
+			<input type="radio" name="teste" value="">
+		</div>
+		
+		<input class="btn" type="submit" name="">
+	</form>
+</body>
+</html>

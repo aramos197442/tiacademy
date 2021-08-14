@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>POSITION Z-INDEX</title>
+
+<style type="text/css">
+	body{
+		margin: 0;
+
+	}
+
+	div{
+		width: 80px;
+		height: 100px;
+		border: 1px solid #000;
+		position: absolute;
+
+	}
+	#z1{
+		background-color: red;
+		z-index: 3;
+		margin-left: 10px;
+	}
+	#z2{
+		background-color: yellow;
+		z-index: 2;
+		margin-left: 20px;
+
+	}
+	#z3{
+		background-color: black;
+		
+		margin-left: 30px;
+	}
+	#z4{
+		background-color: blue;
+		margin-left: 40px;
+
+	}
+
+</style>
+
+<body>
+	<div id="z1"></div>
+	<div id="z2"></div>
+	<div id="z3"></div>
+	<div id="z4"></div>	
+</body>
+</html>
