@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Box sizing</title>
+<style type="text/css">
+
+
+	:root{
+		--cor-padrao: blue;
+		--font-padrao: verdana, arial, cursive;
+	}
+
+
+	* {
+		background-color: var(--cor-padrao);
+
+	}
+
+	div#teste{
+		width: 300px;
+		height: 200px;
+		background-color: cyan;
+		border: 1px solid #000;
+		padding: 3px;
+		box-sizing: border-box;
+
+	}
+	div#box{
+		width: 300px;
+		height: 200px;
+		background-color: cyan;
+		border: 1px solid #000;
+		margin-top: 0px;
+		box-sizing: border-box;
+
+
+	}
+
+	p{
+		width: 300px;
+		height: auto;
+		border: 0px solid red;
+		box-sizing: border-box;
+		padding: 0;
+		margin:  0;
+
+
+	}
+
+</style>
+
+<body>
+	<main>
+		<div id="teste">
+			<p>
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero fugit facere minima hic, culpa non iure quo sequi eum molestiae ea dolorum repellat numquam cumque dolores fugiat explicabo impedit neque.
+			</p>
+		</div>
+		<div id="box">
+			
+		</div>
+	</main>
+</body>
+</html>
