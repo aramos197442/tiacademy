@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Desafio 2</title>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	header, footer{
+		width: 100%;
+		border-bottom: 1px solid #000;
+		background-color: black;
+		position: fixed;
+	}
+
+	header{
+		top: 0;
+		height: 40px;
+	}
+
+	footer{
+		height: 80px;
+		border-bottom: 0;
+		border-top: 1px solid #000;
+		position: fixed;
+		bottom: 0;
+	}
+
+	main{
+		width: 100%;
+		height: auto;
+		background-color: cyan;
+	    font-family: verdana, arial, cursive;
+
+	}
+
+	#content{
+		width: 80%;
+		margin: 0 auto;
+
+	}
+	
+	.logo{
+		width: 50%;
+	    height: 40px;
+	    display: flex;
+	    position: absolute;
+	    color: #fff;
+	    font-family: verdana, arial, cursive;
+	    font-size: 25px;
+	    font-weight: bold;
+	    align-items: center;
+	    justify-content: center;	}
+
+	.content-btn{
+		width: 50%;
+		height: auto;
+		border: 1px solid #000;
+		display: flex;
+		position: absolute;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.btn {
+		padding: 10px;
+	    font-size: 14px;
+	    font-family: verdana, arial, sans-serif;
+	    color: #fff;
+	    display: flex;
+	    background-color: black;
+	    justify-content: center;
+	    align-items: center;
+	    border-radius: 15px;	
+	    text-decoration: none;
+	}
+
+	.btn:hover{
+		background-color: #ff9900;
+		color: white;
+	}
+
+</style>
+
+<body>
+	<header>
+		<div class="logo">LOGO</div>
+		<div class="content-btn">
+			
+			<input class="btn" type="button" value="Home" name="">
+			<input class="btn" type="button" value="Contato" name="">
+			<input class="btn" type="button" value="Sobre" name="">
+		</div>
+	</header>
+	<main>
+		<div id="content">
+		</div>
+	</main>
+	<footer></footer>
+</body>
+</html>
