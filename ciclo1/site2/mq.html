@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Media Query</title>
+</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+
+	}
+
+	main{
+		display: flex;
+		width: 80%;
+		height: auto;
+		margin: 0 auto;
+		background-color: tomato;
+
+	}
+
+	.filho{
+		width: 100%;
+		background-color: yellow;
+
+	}
+
+	@media screen and (max-width: 700px){
+		main{
+			background-color: cyan;
+			flex-direction: column;		
+		}
+		
+	}
+</style>
+
+<body>
+	<main>
+		<div class="filho">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dolore, exercitationem aliquid, doloribus quia officiis impedit iusto natus? Fuga illo voluptates sed molestias quam blanditiis accusamus at exercitationem? Fuga, perspiciatis!</p>
+		</div>
+		<div class="filho">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dolore, exercitationem aliquid, doloribus quia officiis impedit iusto natus? Fuga illo voluptates sed molestias quam blanditiis accusamus at exercitationem? Fuga, perspiciatis!</p>
+		</div>
+	</main>
+	
+</body>
+</html>
