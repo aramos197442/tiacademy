@@ -10,38 +10,39 @@ html, body    {
     }
 
 .nicho{
-	position: absolute;
-    width: 50%;
-    height: 50%;
-    background-color: cyan;
+
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        background-color: cyan;
 
 }
 
 .quadrado{
 	position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 100px;
-    height: 100px;
-    border: 1px solid #000;
-    background-color: tomato;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        top: 10px;
+        left: 10px;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+        background-color: tomato;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 
 .circulo{
 	position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 100px;
-    height: 100px;
-    border: 1px solid #000;
-    background-color: #015793;
-    border-radius: 100%;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        bottom: 10px;
+        right: 10px;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+        background-color: #015793;
+        border-radius: 100%;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
