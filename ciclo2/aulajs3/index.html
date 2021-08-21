@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<script type="text/javascript" src="obj.js"></script>-->
+	<!--<script type="text/javascript" src="arr.js"></script>--> 
+	<script type="text/javascript" src="eventos.js"></script>
+	<title>Document</title>
+</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		border-style: border-box;
+	}
+
+	main{
+
+	}
+
+	p{
+		border: 1px solid black;
+		padding: 15px;
+		width: 200px;
+		height: auto;
+
+	}
+
+	.corBg{
+		background-color: orangered;
+	}
+
+	.modal{
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.4);
+		position: absolute;
+		z-index: 1;
+	}
+
+
+</style>
+<body>
+	<div id="janModal" >
+		<input type="button" name="" value="X" id="fecharModal">
+	</div>
+
+	<main>
+
+		<input type="text" id="texto" name="" value="">
+		<input type="button" id="btn1" name="btn-main" value="click">
+		<p class="legenda">	</p><br>
+		
+		<h4> Trocar Senha </h4>
+		<input type="password" id="senha" name="">
+		<input type="button" value="VER SENHA" id="verSenha" name="">
+
+		<h4>Quando perder o foco</h4>
+		<input type="text" id="cxTbg" name="">
+
+		<h4>Somar dosi valores</h4>
+		<input type="text" id="v1" name="">
+		<input type="text" id="v2" name="">
+		<input type="button" id="soma" name="" value="SOMAR">
+		<span id="resultado"></span>
+
+		<h4>Somar dosi valores</h4>
+		<input type="button" id="chamarModal" value="chamarModal" name="">
+	</main>
+	
+</body>
+</html>
