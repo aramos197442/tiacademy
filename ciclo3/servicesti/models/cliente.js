@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Cliente.hasMany(Pedido)
     }
   };
+  
   Cliente.init({
     nome: DataTypes.STRING(50),
     endereco: DataTypes.STRING,

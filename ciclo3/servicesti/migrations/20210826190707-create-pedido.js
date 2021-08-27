@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idCliente: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'clientes',
@@ -18,6 +19,7 @@ module.exports = {
         onUpdate: 'CASCADE'
       },
       idServico: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'servicos',
