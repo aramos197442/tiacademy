@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Cliente.hasMany(Pedido)
+      Cliente.hasMany(models.Pedido)
     }
   };
-  
+
   Cliente.init({
     nome: DataTypes.STRING(50),
     endereco: DataTypes.STRING,

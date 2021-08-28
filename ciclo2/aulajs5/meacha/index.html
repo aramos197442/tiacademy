@@ -5,6 +5,9 @@
 <link rel="stylesheet" type="text/css" href="css2/site2.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+
+<script type="text/javascript" src="./script.js"></script>
+
 <title>HOME</title>
 
 <body>
@@ -25,22 +28,22 @@
 				<div class="box-custom flex justify-content">
 						<form>
 								<label>CEP
-									<input type="text" name="CEP" required>	
+									<input type="text" class="cxCep" name="cep" required>	
 								</label>
 								<label>RUA
-									<input type="text" name="Rua" readonly>
+									<input type="text" id="logradouro" name="rua" readonly>
 								</label>
 								<label>BAIRRO
-									<input type="text" name="Bairro" readonly>	
+									<input type="text" id="bairro" name="bairro" readonly>	
 								</label>	
 								<label>CIDADE
-									<input type="text" name="Cidade" readonly>	
+									<input type="text" id="localidade" name="cidade" readonly>	
 								</label>
 								<label>UF
-									<input type="text" name="UF" readonly>			
+									<input type="text" id="uf" name="uf" readonly>			
 								</label>
 								<div class="display-btn flex justify-content">
-									<input class="btn" type="button" value="BUSCAR" name="Buscar">
+									<input id="btnBuscaCep" type="button" value="BUSCAR" name="Buscar">
 								</div>
 								
 	
