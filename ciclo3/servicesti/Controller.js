@@ -58,6 +58,116 @@ app.post('/servicos', async(req,res)=>{
     res.send('SERVIÇO ADICIONADO!');
 });
 
+app.get('/listaservicos', async(req,res)=>{
+    await servico.findAll({
+//        raw:true  // listando desordenadamente...
+          order: [['nome','DESC']]
+    }).then(function(servicos){
+        res.json({servicos})
+    });
+});
+
+// ------------ EXERCÍCIOS DE 30/08/2021 ---------------------
+//
+//
+// Exercicio 1: Lista todos os clientes
+app.get('/listaclientes', async(req,res)=>{  
+    await cliente.findAll({
+//        raw:true  // listando desordenadamente...
+          order: [['nome','ASC']]
+    }).then(function(clientes){
+        res.json({clientes})
+    });
+});
+
+// Exercicio 2: Lista clientes por ordem de antiguidade
+app.get('/lclipornasc', async(req,res)=>{
+    await cliente.findAll({
+//        raw:true  // listando desordenadamente...
+          order: [['nascimento','DESC']]
+    }).then(function(clientes){
+        res.json({clientes})
+    });
+});
+
+// Exercicio 3: Lista todos os pedidos
+app.get('/listapedidos', async(req,res)=>{
+    await pedido.findAll({
+        raw:true  // listando desordenadamente...
+//          order: [['nome','DESC']]
+    }).then(function(pedidos){
+        res.json({pedidos})
+    });
+});
+
+// Exercicio 4: Lista pedidos por ordem de maior para menor valor
+app.get('/lpedidos', async(req,res)=>{
+    await pedido.findAll({
+          order: [['valor','DESC']]
+    }).then(function(pedidos){
+        res.json({pedidos})
+    });
+});
+
+// Exercicio 5: Quantidade de clientes
+app.get('/qtdecli', async(req,res)=>{
+    await cliente.count('id').then(function(cliente){
+        res.json({cliente})
+    });
+});
+
+// Exercicio 6: Quantidade de pedidos
+app.get('/qtdepedidos', async(req,res)=>{
+    await pedido.count('id').then(function(pedido){
+        res.json({pedido})
+    });
+});
+//
+//
+// ----------------------------- FIM DOS EXERCICIOS DE 30/08/2021 --------------
+
+// ----------------------------- DESAFIO DE 30/08/2021 -------------------------
+const { Op } = require("sequelize");
+
+app.get('/totalcliente/:clienteId', async(req,res)=>{
+    await pedido.sum('valor', { where: { ClienteId:{[Op.eq]: req.params.clienteId} } })
+    .then(saldo=>{
+        return res.json({
+            error: false,
+            saldo
+        });
+    }).catch(function(erro){
+            return res.status(400).json({
+            error: true,
+            message: "Cliente sem pedidos!"
+        });
+    });
+});
+
+
+// ----------------------------- FIM DO DESAFIO DE 30/08/2021 --------------------
+
+app.get('/ofertas', async(req,res)=>{
+    await servico.count('id').then(function(servicos){
+        res.json({servicos})
+    });
+});
+
+app.get('/servico/:id', async(req,res)=>{
+    servico.findByPk(req.params.id)
+    .then(servico=>{
+        return res.json({
+            error: false,
+            servico
+        });
+    }).catch(function(erro){
+            return res.status(400).json({
+            error: true,
+            message: "Código não cadastrado!"
+        });
+    });
+});
+
 let port=process.env.PORT || 3000;
 
 app.listen(port, (req,res)=>{

@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Pedido.init({
-    idCliente: DataTypes.INTEGER,
-    idServico: DataTypes.INTEGER,
+    ClienteId: DataTypes.INTEGER,
+    ServicoId: DataTypes.INTEGER,
     valor: DataTypes.FLOAT(6,2),
     data: DataTypes.DATEONLY
   }, {
