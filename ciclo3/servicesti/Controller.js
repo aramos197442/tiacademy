@@ -168,6 +168,133 @@ app.get('/servico/:id', async(req,res)=>{
     });
 });
 
+// ----------- Aula 4 - Update e Delete
+app.get('/atualizaservico', async(req, res)=>{
+    await servico.findByPk(1)
+    .then(servico=>{
+        servico.nome ='HTML/CSS/JS';
+        servico.descricao = 'Páginas estáticas e dinâmicas estilizadas';
+        servico.save();
+        return res.json({servico});
+    });
+});
+
+app.put('/editarservico', (req,res)=>{
+    servico.update(req.body, {
+        where:{id: req.body.id }
+    }).then(function(){
+        return res.json({
+            error: false,
+            message: "Serviço alterado com sucesso"
+        });
+    }).catch(function(erro){
+        return res.status(400).json({
+            error: true,
+            message: "Erro na alteração do serviço."
+        });
+    });
+});
+
+app.get('/servicospedidos', async(req,res)=>{
+    await servico.findByPk(1, {
+        include:[{all:true}]
+    }).then(servico=>{
+        return res.json({servico});
+    });
+});
+
+
+app.put('/editarpedido', (req, res) =>{
+    pedido.update(req.body, {
+        where: {ServicoId: req.body.ServicoId}
+    }).then(function(){
+        return res.json({
+            error: false,
+            message: "Pedido modificado com sucesso."
+        })
+    }).catch(function(erro){
+        return res.status(400).json({
+            error: true,
+            message: "Não foi possível modificar o pedido."
+        });
+    });
+});
+
+// ------------ Exercicio 1 - Buscar nos pedido servico pelo id do cliente - COM ERRO!!!
+
+app.get('/servicocliente',async(req,res)=>{
+//    pedido.findAll({  // Traz todos os pedidos deste cliente
+    pedido.findOne({    // Traz o primeiro pedido deste cliente
+    where:{ ClienteId:{[Op.eq]: req.body.ClienteId}}
+    }).then(pedidos=>{
+        return res.json({
+            error:false,
+            pedidos
+        });
+    }).catch(function(erro){
+        return res.status(400).json({
+            error: true,
+            message: "Cliente não está cadastrado"
+        });
+    });
+});
+
+// ------------ Exercicio 2
+app.put('/editarcliente',(req,res)=>{
+    cliente.update(req.body,{
+        where: {id: req.body.id}
+    }).then(function(){
+        return res.json({
+            error: false,
+            message: "Cliente foi alterado com sucesso."
+        });
+        }).catch(function(erro){
+            return res.status(400).json({
+            error: true, 
+            message: "Erro na alteração do serviço."
+        });
+    });
+});
+
+// -----------------Exercicio 3
+app.put('/editarpedido',(req,res)=>{
+    pedido.update(req.body,{
+        where: {id: req.body.id}
+    }).then(function(){
+        return res.json({
+            error: false,
+            message: "Serviço foi alterado com sucesso."
+        });
+        }).catch(function(erro){
+            return res.status(400).json({
+            error: true, 
+            message: "Erro na alteração do serviço."
+        });
+    });
+});
+
+app.get('/excluircliente', async (req,res)=>{
+    cliente.destroy({
+        where:{id: 2}
+    });
+});
+
+app.delete('/apagarcliente/:id', (req,res)=>{
+    cliente.destroy({
+        where:{id: req.params.id}
+    }).then(function(){
+        return res.json({
+            error: false,
+            message: 'Cliente excluido com sucesso!'
+        });
+    }).catch(function(){
+        return res.status(400).json({
+            error: true,
+            message: 'Não foi possivel excluir o cliente.'
+        });
+    });
+});
+
 let port=process.env.PORT || 3000;
 
 app.listen(port, (req,res)=>{
