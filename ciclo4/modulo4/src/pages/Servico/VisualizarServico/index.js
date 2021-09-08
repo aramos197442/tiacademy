@@ -17,7 +17,6 @@ export const VisualizarServico = () => {
     const getServicos = async () => {
         await axios.get(api + '/listaservicos')
             .then((response) => {
-                console.log(response.data.servicos);
                 setData(response.data.servicos);
             })
             .catch(() => {
@@ -36,6 +35,15 @@ export const VisualizarServico = () => {
         <div className="p-3">
             <Container>
                 { status.erro === 'error' ? <Alert color="danger">{status.message}</Alert> : ""}
+                <div className="d-flex">
+                    <div className="mr-auto p-2">
+                        <h1>Informações do Serviço</h1>
+                    </div>
+                    <div className="p-2">
+                        <Link to="/cadastrarservico"
+                            className="btn btn-outline-warning btn-sm">Cadastrar</Link>
+                    </div>
+                </div>
 
                 <Table striped hover >
                     <thead>

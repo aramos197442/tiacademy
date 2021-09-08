@@ -51,11 +51,23 @@ app.post('/pedidos', async(req,res)=>{
 });
 
 app.post('/servicos', async(req,res)=>{
+
+    /* Exercicio Chorinho do Ciclo 4  */
+
+
     let create = await servico.create(
         req.body
     );
 
     res.send('SERVIÇO ADICIONADO!');
+
+    await aguardar(3000);
+    function aguardar(ms){
+        return new Promise((resolve)=>{
+            setTimeout(resolve.ms);
+        })
+    }
+
 });
 
 app.get('/listaservicos', async(req,res)=>{

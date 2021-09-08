@@ -8,6 +8,7 @@ import {VisualizarServico} from './pages/Servico/VisualizarServico/';
 import {Pedido} from './pages/Pedido/Pedido';
 import {VisualizarPedido} from './pages/Pedido/VisualizarPedido/';
 import { Menu } from './components/Menu';
+import { Cadastrar } from './pages/Servico/Cadastrar';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cliente/:id" component={Cliente}/>
         <Route exact path="/visualizarcliente" component={VisualizarCliente}/>
         <Route path="/servico/:id" component={Servico}/>
+        <Route path="/cadastrarservico" component={Cadastrar}/>
         <Route exact path="/visualizarservico" component={VisualizarServico}/>
         <Route path="/pedido/:id" component={Pedido}/>
         <Route exact path="/visualizarpedido" component={VisualizarPedido}/>

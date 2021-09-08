@@ -14,6 +14,7 @@ export const Pedido = (props) => {
             await axios.get(api + '/pedido/' + id)
                 .then((response) => {
                     setData(response.data.pedido);
+                    console.log(response.data.pedido);
                 })
                 .catch(() => {
                     console.log("Erro: Não foi possível conectar a API.");

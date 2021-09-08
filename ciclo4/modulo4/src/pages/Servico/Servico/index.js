@@ -13,6 +13,7 @@ export const Servico = (props) => {
         const getServico = async () => {
             await axios.get(api + '/servico/' + id)
                 .then((response) => {
+                    console.log(response.data.servico);
                     setData(response.data.servico);
                 })
                 .catch(() => {
