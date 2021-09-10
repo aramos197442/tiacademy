@@ -9,6 +9,7 @@ import {Pedido} from './pages/Pedido/Pedido';
 import {VisualizarPedido} from './pages/Pedido/VisualizarPedido/';
 import { Menu } from './components/Menu';
 import { Cadastrar } from './pages/Servico/Cadastrar';
+import { Editar } from './pages/Servico/Editar';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/visualizarcliente" component={VisualizarCliente}/>
         <Route path="/servico/:id" component={Servico}/>
         <Route path="/cadastrarservico" component={Cadastrar}/>
+        <Route exact path="/editar-servico/:id" component={Editar}/>
         <Route exact path="/visualizarservico" component={VisualizarServico}/>
         <Route path="/pedido/:id" component={Pedido}/>
         <Route exact path="/visualizarpedido" component={VisualizarPedido}/>

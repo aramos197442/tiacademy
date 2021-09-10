@@ -7,7 +7,7 @@ import { api } from "../../../config";
 export const Servico = (props) => {
 
     const [data, setData] = useState([]);
-    const [id, setID] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     useEffect(() => {
         const getServico = async () => {
@@ -32,7 +32,10 @@ export const Servico = (props) => {
                     </div>
                     <div className="p-2">
                         <Link to="/visualizarservico"
-                            className="btn btn-outline-warning btn-sm">Serviços</Link>
+                            className="btn btn-outline-warning btn-sm m-1">Listar</Link>
+                        <Link to={"/editar-servico/"+data.id}
+                            className='btn btn-outline-warning btn-sm'>Editar</Link>
+
                     </div>
                 </div>
                 <dl className="row">

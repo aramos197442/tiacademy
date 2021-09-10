@@ -7,7 +7,7 @@ import { api } from "../../../config";
 export const Cliente = (props) => {
 
     const [data, setData] = useState([]);
-    const [id, setID] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     useEffect(() => {
         const getCliente = async () => {

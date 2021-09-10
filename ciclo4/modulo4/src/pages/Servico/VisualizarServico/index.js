@@ -4,6 +4,7 @@ import axios from 'axios';
 import { api } from "../../../config";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Servico } from "../Servico";
 
 export const VisualizarServico = () => {
 
@@ -27,6 +28,31 @@ export const VisualizarServico = () => {
 
             });
     }
+
+
+    const apagarServico = async (idServico) => {
+        console.log(idServico);
+
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+
+        await axios.delete(api + '/apagarservico/' + idServico, { headers })
+            .then((response) => {
+                console.log(response.data.error);
+                getServicos();
+
+            })
+            .catch(() => {
+                setStatus({
+                    type: 'error',
+                    message: 'Erro: Não foi possivel acessar a API.'
+
+                });
+            });
+    }
+
+
     useEffect(() => {
         getServicos();
     }, []);
@@ -34,7 +60,7 @@ export const VisualizarServico = () => {
     return (
         <div className="p-3">
             <Container>
-                { status.erro === 'error' ? <Alert color="danger">{status.message}</Alert> : ""}
+                {status.erro === 'error' ? <Alert color="danger">{status.message}</Alert> : ""}
                 <div className="d-flex">
                     <div className="mr-auto p-2">
                         <h1>Informações do Serviço</h1>
@@ -60,9 +86,13 @@ export const VisualizarServico = () => {
                                 <td>{item.id}</td>
                                 <td>{item.nome}</td>
                                 <td>{item.descricao}</td>
-                                <td className="text-center"> 
-                                    <Link to={"/servico/"+item.id}
-                                    className='btn btn-outline-primary btn-sm'>Consultar</Link>
+                                <td className="text-center">
+                                    <Link to={"/servico/" + item.id}
+                                        className='btn btn-outline-primary btn-sm m-1'>Consultar</Link>
+                                    <Link to={"/editar-servico/" + item.id}
+                                        className='btn btn-outline-warning btn-sm'>Editar</Link>
+                                    <span className="btn btn-outline-danger btn-sm m-1" onClick={() => apagarServico(item.id)}>Exclur</span>
+
                                 </td>
                             </tr>
                         ))}

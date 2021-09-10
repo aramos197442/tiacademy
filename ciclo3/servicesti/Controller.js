@@ -308,6 +308,22 @@ app.delete('/apagarcliente/:id', (req,res)=>{
     });
 });
 
+app.delete('/apagarservico/:id', (req,res)=>{
+    servico.destroy({
+        where:{id: req.params.id}
+    }).then(function(){
+        return res.json({
+            error: false,
+            message: 'Serviço excluido com sucesso!'
+        });
+    }).catch(function(){
+        return res.status(400).json({
+            error: true,
+            message: 'Não foi possivel excluir o serviço.'
+        });
+    });
+});
+
 app.get('/cliente/:id', async(req,res)=>{
     cliente.findByPk(req.params.id)
     .then(cliente=>{
