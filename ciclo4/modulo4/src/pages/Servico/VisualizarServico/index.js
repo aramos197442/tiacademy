@@ -1,10 +1,9 @@
 import { Alert, Container, Table } from "reactstrap";
 import axios from 'axios';
 
-import { api } from "../../../config";
+import { api, headers } from "../../../config";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Servico } from "../Servico";
 
 export const VisualizarServico = () => {
 
@@ -32,10 +31,6 @@ export const VisualizarServico = () => {
 
     const apagarServico = async (idServico) => {
         console.log(idServico);
-
-        const headers = {
-            'Content-Type': 'application/json'
-        }
 
         await axios.delete(api + '/apagarservico/' + idServico, { headers })
             .then((response) => {
@@ -89,7 +84,7 @@ export const VisualizarServico = () => {
                                 <td className="text-center">
                                     <Link to={"/servico/" + item.id}
                                         className='btn btn-outline-primary btn-sm m-1'>Consultar</Link>
-                                    <Link to={"/editar-servico/" + item.id}
+                                    <Link to={"/editarservico/" + item.id}
                                         className='btn btn-outline-warning btn-sm'>Editar</Link>
                                     <span className="btn btn-outline-danger btn-sm m-1" onClick={() => apagarServico(item.id)}>Exclur</span>
 

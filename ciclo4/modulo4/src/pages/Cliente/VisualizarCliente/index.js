@@ -1,7 +1,7 @@
 import { Alert, Container, Table } from "reactstrap";
 import axios from 'axios';
 
-import { api } from "../../../config";
+import { api, headers } from "../../../config";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -28,6 +28,26 @@ export const VisualizarCliente = () => {
 
             });
     }
+
+    const apagarCliente = async (idCliente) => {
+        console.log(idCliente);
+
+        await axios.delete(api + '/apagarcliente/' + idCliente, { headers })
+            .then((response) => {
+                console.log(response.data.error);
+                getClientes();
+
+            })
+            .catch(() => {
+                setStatus({
+                    type: 'error',
+                    message: 'Erro: Não foi possivel acessar a API.'
+
+                });
+            });
+    }
+
+
     useEffect(() => {
         getClientes();
     }, []);
@@ -36,6 +56,15 @@ export const VisualizarCliente = () => {
         <div className="p-3">
             <Container>
                 { status.erro === 'error' ? <Alert color="danger">{status.message}</Alert> : ""}
+                <div className="d-flex">
+                    <div className="mr-auto p-2">
+                        <h1>Informações do Cliente</h1>
+                    </div>
+                    <div className="p-2">
+                        <Link to="/cadastrarcliente"
+                            className="btn btn-outline-warning btn-sm">Cadastrar</Link>
+                    </div>
+                </div>
 
                 <Table striped hover >
                     <thead>
@@ -57,6 +86,10 @@ export const VisualizarCliente = () => {
                                 <td className="text-center"> 
                                     <Link to={"/cliente/"+item.id}
                                     className='btn btn-outline-primary btn-sm'>Consultar</Link>
+                                    <Link to={"/editarcliente/" + item.id}
+                                        className='btn btn-outline-warning btn-sm'>Editar</Link>
+                                    <span className="btn btn-outline-danger btn-sm m-1" onClick={() => apagarCliente(item.id)}>Exclur</span>
+
                                 </td>
                             </tr>
                         ))}

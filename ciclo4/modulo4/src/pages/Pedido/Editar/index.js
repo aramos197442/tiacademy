@@ -5,12 +5,14 @@ import { Alert, Button, Container, Form, FormGroup, Input, Label, Spinner } from
 import { api, headers } from '../../../config';
 
 
-export const EditarServico = (props) => {
+export const EditarPedido = (props) => {
 
     const [id] = useState(props.match.params.id);
 
-    const [nome, setNome] = useState('');
-    const [descricao, setDescricao] = useState('');
+    const [clienteid, setClienteId] = useState('');
+    const [servicoid, setServicoId] = useState('');
+    const [valor, setValor] = useState('');
+    const [data, setData] = useState('');
 
 
     const [status, setStatus] = useState({
@@ -19,7 +21,7 @@ export const EditarServico = (props) => {
         message: ''
     });
 
-    const edtServico = async e => {
+    const edtPedido = async e => {
         e.preventDefault();
         console.log('Editar')
 
@@ -27,14 +29,14 @@ export const EditarServico = (props) => {
             formSave:true
         });
 
-
-        await axios.put(api+'/editarservico', {id, nome, descricao},  {headers})
+        await axios.put(api+'/editarpedido', {id, clienteid, servicoid, valor, data},  {headers})
         .then((response)=>{
+            console.log(clienteid);
+            console.log(response.data.message);
 
             setStatus({
                 formSave:false
             });
-
         })
         .catch(()=>{
             setStatus({
@@ -45,17 +47,19 @@ export const EditarServico = (props) => {
     };
 
     useEffect(()=>{
-        const getServico = async ()=>{
-            await axios.get(api+'/servico/'+id)
+        const getPedido = async ()=>{
+            await axios.get(api+'/pedido/'+id)
             .then((response)=>{
-                setNome(response.data.servico.nome);
-                setDescricao(response.data.servico.descricao)
+                setClienteId(response.data.pedido.ClienteId);
+                setServicoId(response.data.pedido.ServicoId);
+                setValor(response.data.pedido.valor);
+                setData(response.data.pedido.data);
             })
             .catch(()=>{
                 console.log('Erro: Não foi possível conectar a API.')
             });
         }
-        getServico();
+        getPedido();
     },[id]);
 
     return (
@@ -64,12 +68,12 @@ export const EditarServico = (props) => {
                 <Container>
                     <div className="d-flex">
                         <div className="mr-auto p-2">
-                            <h1>Editar serviço</h1>
+                            <h1>Editar pedido</h1>
                         </div>
                         <div>
-                            <Link to={"/visualizarservico/"}
+                            <Link to={"/visualizarpedido/"}
                                 className='btn btn-outline-primary btn-sm m-1'>Listar</Link>
-                            <Link to={"/servico/" + id}
+                            <Link to={"/pedido/" + id}
                                 className='btn btn-outline-primary btn-sm m-1'>Consultar</Link>
 
                         </div>
@@ -80,15 +84,27 @@ export const EditarServico = (props) => {
                     {status.type === 'error' ? <Alert color='danger'>{status.message}</Alert> : ''}
                     {status.type === 'success' ? <Alert color='success'>{status.message}</Alert> : ''}
 
-                    <Form className="p-2" onSubmit={edtServico}>
+                    <Form className="p-2" onSubmit={edtPedido}>
                         <FormGroup className="p-2">
-                            <Label>Nome</Label>
-                            <Input type="text" name="nome" placeholder="Nome do serviço" value={nome} onChange={e => setNome(e.target.value)}/>
+                            <Label>Cliente ID</Label>
+                            <Input type="text" name="clienteid" placeholder="Código do cliente" value={clienteid} />
 
                         </FormGroup>
                         <FormGroup className="p-2">
-                            <Label >Descrição</Label>
-                            <Input type="text" name="descricao" placeholder="Descrição do serviço"  value={descricao} onChange={e => setDescricao(e.target.value)}/>
+                            <Label >Serviço ID</Label>
+                            <Input type="text" name="servicoid" placeholder="Código do serviço"  value={servicoid} />
+
+                        </FormGroup>
+
+                        <FormGroup className="p-2">
+                            <Label >Valor</Label>
+                            <Input type="number" name="valor" placeholder="Valor"  value={valor} onChange={e => setValor(e.target.value)}/>
+
+                        </FormGroup>
+
+                        <FormGroup className="p-2">
+                            <Label >data</Label>
+                            <Input type="date" name="data" placeholder="Data"  value={data} onChange={e => setData(e.target.value)}/>
 
                         </FormGroup>
 

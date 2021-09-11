@@ -48,6 +48,13 @@ app.post('/pedidos', async(req,res)=>{
     );
 
     res.send('PEDIDO ADICIONADO!');
+
+    await aguardar(3000);
+    function aguardar(ms){
+        return new Promise((resolve)=>{
+            setTimeout(resolve, ms);
+        })
+    }
 });
 
 app.post('/servicos', async(req,res)=>{
@@ -64,7 +71,7 @@ app.post('/servicos', async(req,res)=>{
     await aguardar(3000);
     function aguardar(ms){
         return new Promise((resolve)=>{
-            setTimeout(resolve.ms);
+            setTimeout(resolve, ms);
         })
     }
 
@@ -217,7 +224,7 @@ app.get('/servicospedidos', async(req,res)=>{
 });
 
 
-app.put('/editarpedido', (req, res) =>{
+app.put('/editarpedido2', (req, res) =>{
     pedido.update(req.body, {
         where: {ServicoId: req.body.ServicoId}
     }).then(function(){
@@ -315,6 +322,22 @@ app.delete('/apagarservico/:id', (req,res)=>{
         return res.json({
             error: false,
             message: 'Serviço excluido com sucesso!'
+        });
+    }).catch(function(){
+        return res.status(400).json({
+            error: true,
+            message: 'Não foi possivel excluir o serviço.'
+        });
+    });
+});
+
+app.delete('/apagarpedido/:id', (req,res)=>{
+    pedido.destroy({
+        where:{id: req.params.id}
+    }).then(function(){
+        return res.json({
+            error: false,
+            message: 'Pedido excluido com sucesso!'
         });
     }).catch(function(){
         return res.status(400).json({
